@@ -332,6 +332,15 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
                     ),
                   ],
                 ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    taskDetailsToDoListRecord.toDoPhoto,
+                    width: 300.0,
+                    height: 200.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ],
             ),
           ),

@@ -20,27 +20,26 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   FocusNode? farmNameFocusNode;
   TextEditingController? farmNameController;
   String? Function(BuildContext, String?)? farmNameControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? emailTextController;
-  String? Function(BuildContext, String?)? emailTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? passwordTextController;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? confirmPasswordTextController;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)?
-      confirmPasswordTextControllerValidator;
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailController;
+  String? Function(BuildContext, String?)? emailControllerValidator;
+  // State field(s) for password widget.
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordControllerValidator;
+  // State field(s) for confirm_password widget.
+  FocusNode? confirmPasswordFocusNode;
+  TextEditingController? confirmPasswordController;
+  late bool confirmPasswordVisibility;
+  String? Function(BuildContext, String?)? confirmPasswordControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    passwordVisibility1 = false;
-    passwordVisibility2 = false;
+    passwordVisibility = false;
+    confirmPasswordVisibility = false;
   }
 
   void dispose() {
@@ -50,14 +49,14 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     farmNameFocusNode?.dispose();
     farmNameController?.dispose();
 
-    textFieldFocusNode1?.dispose();
-    emailTextController?.dispose();
+    emailFocusNode?.dispose();
+    emailController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    passwordTextController?.dispose();
+    passwordFocusNode?.dispose();
+    passwordController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    confirmPasswordTextController?.dispose();
+    confirmPasswordFocusNode?.dispose();
+    confirmPasswordController?.dispose();
   }
 
   /// Action blocks are added here.

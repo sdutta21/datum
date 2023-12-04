@@ -30,18 +30,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     _model.fullNameController ??= TextEditingController();
     _model.fullNameFocusNode ??= FocusNode();
 
-    _model.farmNameController ??=
-        TextEditingController(text: 'Enter farm name...');
+    _model.farmNameController ??= TextEditingController();
     _model.farmNameFocusNode ??= FocusNode();
 
-    _model.emailTextController ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.emailController ??= TextEditingController();
+    _model.emailFocusNode ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
 
-    _model.confirmPasswordTextController ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.confirmPasswordController ??= TextEditingController();
+    _model.confirmPasswordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -71,19 +70,26 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
+            Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(
-                        150.0, 150.0, 0.0, 100.0),
-                    child: Text(
-                      'Datum Logo',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/418466_Icon,_Farm,_Data,_Management,_Accessible,_Datum___xl-1024-v1-0.png',
+                      width: 300.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Text(
+                    'Datum',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ),
               ],
@@ -100,172 +106,102 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        StreamBuilder<List<UsersRecord>>(
-                          stream: queryUsersRecord(
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<UsersRecord> fullNameUsersRecordList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final fullNameUsersRecord =
-                                fullNameUsersRecordList.isNotEmpty
-                                    ? fullNameUsersRecordList.first
-                                    : null;
-                            return TextFormField(
-                              controller: _model.fullNameController,
-                              focusNode: _model.fullNameFocusNode,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: 'Full Name',
-                                hintText: 'Enter your name here...',
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                filled: true,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                        TextFormField(
+                          controller: _model.fullNameController,
+                          focusNode: _model.fullNameFocusNode,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Full Name',
+                            alignLabelWithHint: false,
+                            hintText: 'Enter your name here...',
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).secondary,
+                                width: 1.0,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: _model.fullNameControllerValidator
-                                  .asValidator(context),
-                            );
-                          },
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context).secondary,
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: _model.fullNameControllerValidator
+                              .asValidator(context),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
-                          child: StreamBuilder<List<UsersRecord>>(
-                            stream: queryUsersRecord(
-                              singleRecord: true,
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<UsersRecord> farmNameUsersRecordList =
-                                  snapshot.data!;
-                              // Return an empty Container when the item does not exist.
-                              if (snapshot.data!.isEmpty) {
-                                return Container();
-                              }
-                              final farmNameUsersRecord =
-                                  farmNameUsersRecordList.isNotEmpty
-                                      ? farmNameUsersRecordList.first
-                                      : null;
-                              return TextFormField(
-                                controller: _model.farmNameController,
-                                focusNode: _model.farmNameFocusNode,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Farm Name',
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).secondary,
+                          child: TextFormField(
+                            controller: _model.farmNameController,
+                            focusNode: _model.farmNameFocusNode,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Farm Name',
+                              hintText: 'Enter farm name...',
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  width: 1.0,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.farmNameControllerValidator
-                                    .asValidator(context),
-                              );
-                            },
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context).secondary,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            validator: _model.farmNameControllerValidator
+                                .asValidator(context),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: TextFormField(
-                            controller: _model.emailTextController,
-                            focusNode: _model.textFieldFocusNode1,
+                            controller: _model.emailController,
+                            focusNode: _model.emailFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Email Address',
@@ -303,7 +239,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                             keyboardType: TextInputType.emailAddress,
-                            validator: _model.emailTextControllerValidator
+                            validator: _model.emailControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -311,9 +247,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: TextFormField(
-                            controller: _model.passwordTextController,
-                            focusNode: _model.textFieldFocusNode2,
-                            obscureText: !_model.passwordVisibility1,
+                            controller: _model.passwordController,
+                            focusNode: _model.passwordFocusNode,
+                            obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
                               hintText: 'Enter your password here...',
@@ -349,12 +285,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               fillColor: FlutterFlowTheme.of(context).secondary,
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                  () => _model.passwordVisibility1 =
-                                      !_model.passwordVisibility1,
+                                  () => _model.passwordVisibility =
+                                      !_model.passwordVisibility,
                                 ),
                                 focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
-                                  _model.passwordVisibility1
+                                  _model.passwordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: Color(0x80FFFFFF),
@@ -363,7 +299,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model.passwordTextControllerValidator
+                            validator: _model.passwordControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -371,9 +307,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: TextFormField(
-                            controller: _model.confirmPasswordTextController,
-                            focusNode: _model.textFieldFocusNode3,
-                            obscureText: !_model.passwordVisibility2,
+                            controller: _model.confirmPasswordController,
+                            focusNode: _model.confirmPasswordFocusNode,
+                            obscureText: !_model.confirmPasswordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Confirm Password',
                               hintText: 'Confirm password here...',
@@ -409,12 +345,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               fillColor: FlutterFlowTheme.of(context).secondary,
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                  () => _model.passwordVisibility2 =
-                                      !_model.passwordVisibility2,
+                                  () => _model.confirmPasswordVisibility =
+                                      !_model.confirmPasswordVisibility,
                                 ),
                                 focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
-                                  _model.passwordVisibility2
+                                  _model.confirmPasswordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: Color(0x80FFFFFF),
@@ -423,8 +359,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model
-                                .confirmPasswordTextControllerValidator
+                            validator: _model.confirmPasswordControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -434,8 +369,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
-                              if (_model.passwordTextController.text !=
-                                  _model.confirmPasswordTextController.text) {
+                              if (_model.passwordController.text !=
+                                  _model.confirmPasswordController.text) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
@@ -449,8 +384,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               final user =
                                   await authManager.createAccountWithEmail(
                                 context,
-                                _model.emailTextController.text,
-                                _model.passwordTextController.text,
+                                _model.emailController.text,
+                                _model.passwordController.text,
                               );
                               if (user == null) {
                                 return;
@@ -460,6 +395,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   .doc(user.uid)
                                   .update(createUsersRecordData(
                                     displayName: _model.fullNameController.text,
+                                    farmName: _model.farmNameController.text,
                                   ));
 
                               context.goNamedAuth('myTasks', context.mounted);

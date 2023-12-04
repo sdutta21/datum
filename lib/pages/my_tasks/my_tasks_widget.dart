@@ -172,10 +172,6 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                   pagingController: _model.setListViewController(
                     ToDoListRecord.collection
                         .where(
-                          'user',
-                          isEqualTo: currentUserReference,
-                        )
-                        .where(
                           'toDoState',
                           isEqualTo: false,
                         )

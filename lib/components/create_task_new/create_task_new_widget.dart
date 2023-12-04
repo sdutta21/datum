@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -168,8 +167,13 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                         .primaryText,
                                   ),
                               hintText: 'Enter your task here....',
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).titleSmall,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context)
@@ -223,8 +227,13 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                         .primaryText,
                                   ),
                               hintText: 'Enter a description here...',
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).titleSmall,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context)
@@ -354,7 +363,7 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
                                 context: context,
-                                storageFolderPath: 'Pics/Upload',
+                                storageFolderPath: 'pics/uploads',
                                 allowPhoto: true,
                                 allowVideo: true,
                                 backgroundColor:
@@ -388,7 +397,7 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
 
                                   downloadUrls =
                                       await uploadSupabaseStorageFiles(
-                                    bucketName: 'toDoPhoto',
+                                    bucketName: 'test',
                                     selectedFiles: selectedMedia,
                                   );
                                 } finally {
@@ -475,13 +484,6 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  final user = await authManager
-                                      .signInWithGoogle(context);
-                                  if (user == null) {
-                                    return;
-                                  }
-
                                   await ToDoListRecord.collection
                                       .doc()
                                       .set(createToDoListRecordData(
@@ -489,16 +491,9 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                         toDoDescription:
                                             _model.textController2.text,
                                         toDoDate: _model.datePicked,
-                                        user: currentUserReference,
                                         toDoState: false,
-                                        toDoPhoto: random_data.randomImageUrl(
-                                          0,
-                                          0,
-                                        ),
+                                        toDoPhoto: _model.uploadedFileUrl,
                                       ));
-
-                                  context.goNamedAuth(
-                                      'myTasks', context.mounted);
                                 },
                                 text: 'Create Task',
                                 options: FFButtonOptions(

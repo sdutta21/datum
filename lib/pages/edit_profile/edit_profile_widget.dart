@@ -36,8 +36,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
+    _model.textController1 ??=
+        TextEditingController(text: currentUserDisplayName);
     _model.textFieldFocusNode1 ??= FocusNode();
 
+    _model.textController2 ??= TextEditingController(text: currentUserEmail);
     _model.textFieldFocusNode2 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -181,81 +184,97 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.textController1 ??=
-                                      TextEditingController(
-                                    text: editProfileUsersRecord?.displayName,
-                                  ),
-                                  focusNode: _model.textFieldFocusNode1,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Full Name',
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
-                                    hintText: 'Please enter your full name...',
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => TextFormField(
+                                    controller: _model.textController1,
+                                    focusNode: _model.textFieldFocusNode1,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Full Name',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                      hintText:
+                                          'Please enter your full name...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      prefixIcon: Icon(
+                                        Icons.person_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        width: 1.0,
+                                            .secondaryText,
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    prefixIcon: Icon(
-                                      Icons.person_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textController1Validator
+                                        .asValidator(context),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  validator: _model.textController1Validator
-                                      .asValidator(context),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.textController2 ??=
-                                      TextEditingController(
-                                    text: editProfileUsersRecord?.email,
-                                  ),
+                                  controller: _model.textController2,
                                   focusNode: _model.textFieldFocusNode2,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Email Address',
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                     hintText: 'Your email...',
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)

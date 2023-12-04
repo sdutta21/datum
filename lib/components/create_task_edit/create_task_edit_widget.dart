@@ -76,6 +76,21 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    valueOrDefault<String>(
+                      widget.todoRef?.toDoPhoto,
+                      'https://picsum.photos/seed/44/600',
+                    ),
+                    width: 300.0,
+                    height: 200.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                 child: Container(
                   width: 60.0,

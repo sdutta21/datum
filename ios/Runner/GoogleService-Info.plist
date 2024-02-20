@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>383185691730-0nukooeialjbitcm3dcaf01m1jleh5en.apps.googleusercontent.com</string>
+	<string>383185691730-lb43874nuqabedmbjktiqfc6q7ucuolu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.383185691730-0nukooeialjbitcm3dcaf01m1jleh5en</string>
+	<string>com.googleusercontent.apps.383185691730-lb43874nuqabedmbjktiqfc6q7ucuolu</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>383185691730-ll65n0l83q2fml2qfa0qg4v48dq1bfit.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDGjrH5AefGJo2SAQkPly7MJC8I1a266AU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Robin.Do</string>
+	<string>datum.farm</string>
 	<key>PROJECT_ID</key>
 	<string>datum-1llvxm</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:383185691730:ios:5c01608f3f98d17a452b8b</string>
+	<string>1:383185691730:ios:d4a37eebefdacd64452b8b</string>
 </dict>
 </plist>

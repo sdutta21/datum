@@ -125,8 +125,8 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF4B986C);
-  late Color secondary = const Color(0xFF928163);
+  late Color primary = const Color(0xFF00396F);
+  late Color secondary = const Color(0xFFFFFFFF);
   late Color tertiary = const Color(0xFF6D604A);
   late Color alternate = const Color(0xFFC8D7E4);
   late Color primaryText = const Color(0xFF0B191E);
@@ -181,107 +181,107 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Urbanist';
+  String get displayLargeFamily => 'Jost';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 52.0,
       );
-  String get displayMediumFamily => 'Urbanist';
+  String get displayMediumFamily => 'Jost';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 44.0,
       );
-  String get displaySmallFamily => 'Urbanist';
+  String get displaySmallFamily => 'Jost';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Urbanist';
+  String get headlineLargeFamily => 'Jost';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineMediumFamily => 'Urbanist';
+  String get headlineMediumFamily => 'Jost';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get headlineSmallFamily => 'Urbanist';
+  String get headlineSmallFamily => 'Jost';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Urbanist';
+  String get titleLargeFamily => 'Jost';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Urbanist',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Plus Jakarta Sans';
+  String get titleMediumFamily => 'Jost';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.info,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Plus Jakarta Sans';
+  String get titleSmallFamily => 'Jost';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.info,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
-  String get labelLargeFamily => 'Plus Jakarta Sans';
+  String get labelLargeFamily => 'Jost';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Plus Jakarta Sans';
+  String get labelMediumFamily => 'Jost';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Plus Jakarta Sans';
+  String get labelSmallFamily => 'Jost';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Plus Jakarta Sans';
+  String get bodyLargeFamily => 'Jost';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Plus Jakarta Sans';
+  String get bodyMediumFamily => 'Jost';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Plus Jakarta Sans';
+  String get bodySmallFamily => 'Jost';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Plus Jakarta Sans',
+        'Jost',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,

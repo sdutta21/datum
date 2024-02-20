@@ -40,6 +40,50 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383185691730:android:69994bc1e85ca349452b8b",
+        "android_client_info": {
+          "package_name": "datum.farm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383185691730-ll65n0l83q2fml2qfa0qg4v48dq1bfit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "datum.farm",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "383185691730-mp60o4s5vlp3c8ra8mn78edgi4le7pbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7CALp2yl0Ay824H22rH3JEB7py_WnYZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383185691730-mp60o4s5vlp3c8ra8mn78edgi4le7pbb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "383185691730-0nukooeialjbitcm3dcaf01m1jleh5en.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Robin.Do"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

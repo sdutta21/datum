@@ -12,10 +12,10 @@ import 'change_password_model.dart';
 export 'change_password_model.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
-  const ChangePasswordWidget({Key? key}) : super(key: key);
+  const ChangePasswordWidget({super.key});
 
   @override
-  _ChangePasswordWidgetState createState() => _ChangePasswordWidgetState();
+  State<ChangePasswordWidget> createState() => _ChangePasswordWidgetState();
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
@@ -67,7 +67,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    Color(0xFF02727E),
                   ),
                 ),
               ),

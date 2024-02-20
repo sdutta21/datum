@@ -99,23 +99,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
-          name: 'myTasks',
-          path: '/myTasks',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'myTasks')
-              : MyTasksWidget(),
-        ),
-        FFRoute(
           name: 'Register',
           path: '/register',
           builder: (context, params) => RegisterWidget(),
-        ),
-        FFRoute(
-          name: 'CompletedTasks',
-          path: '/completedTasks',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'CompletedTasks')
-              : CompletedTasksWidget(),
         ),
         FFRoute(
           name: 'EditProfile',
@@ -130,14 +116,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'TaskDetails',
-          path: '/taskDetails',
-          builder: (context, params) => TaskDetailsWidget(
-            toDoNote: params.getParam(
-                'toDoNote', ParamType.DocumentReference, false, ['ToDoList']),
-          ),
-        ),
-        FFRoute(
           name: 'MyProfile',
           path: '/myProfile',
           builder: (context, params) => params.isEmpty
@@ -148,6 +126,39 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ChangePassword',
           path: '/changePassword',
           builder: (context, params) => ChangePasswordWidget(),
+        ),
+        FFRoute(
+          name: 'List08ProductList',
+          path: '/log',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'List08ProductList')
+              : NavBarPage(
+                  initialPage: 'List08ProductList',
+                  page: List08ProductListWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'EditProfileCopy',
+          path: '/editProfileCopy',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'EditProfileCopy')
+              : NavBarPage(
+                  initialPage: 'EditProfileCopy',
+                  page: EditProfileCopyWidget(
+                    user: params.getParam(
+                        'user', ParamType.DocumentReference, false, ['Users']),
+                  ),
+                ),
+        ),
+        FFRoute(
+          name: 'dashboard',
+          path: '/dashboard',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'dashboard')
+              : NavBarPage(
+                  initialPage: 'dashboard',
+                  page: DashboardWidget(),
+                ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -333,7 +344,7 @@ class FFRoute {
                     height: 50.0,
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
+                        Color(0xFF02727E),
                       ),
                     ),
                   ),
@@ -346,13 +357,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },

@@ -51,15 +51,20 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "photo_url" field.
-  String? _photoUrl;
-  String get photoUrl => _photoUrl ?? '';
-  bool hasPhotoUrl() => _photoUrl != null;
-
   // "farm_name" field.
   String? _farmName;
   String get farmName => _farmName ?? '';
   bool hasFarmName() => _farmName != null;
+
+  // "personal_receipt_data" field.
+  DocumentReference? _personalReceiptData;
+  DocumentReference? get personalReceiptData => _personalReceiptData;
+  bool hasPersonalReceiptData() => _personalReceiptData != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
 
   void _initializeFields() {
     _password = snapshotData['Password'] as String?;
@@ -69,8 +74,10 @@ class UsersRecord extends FirestoreRecord {
     _displayName = snapshotData['display_name'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _photoUrl = snapshotData['photo_url'] as String?;
     _farmName = snapshotData['farm_name'] as String?;
+    _personalReceiptData =
+        snapshotData['personal_receipt_data'] as DocumentReference?;
+    _photoUrl = snapshotData['photo_url'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -114,8 +121,9 @@ Map<String, dynamic> createUsersRecordData({
   String? displayName,
   DateTime? createdTime,
   String? phoneNumber,
-  String? photoUrl,
   String? farmName,
+  DocumentReference? personalReceiptData,
+  String? photoUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,8 +134,9 @@ Map<String, dynamic> createUsersRecordData({
       'display_name': displayName,
       'created_time': createdTime,
       'phone_number': phoneNumber,
-      'photo_url': photoUrl,
       'farm_name': farmName,
+      'personal_receipt_data': personalReceiptData,
+      'photo_url': photoUrl,
     }.withoutNulls,
   );
 
@@ -146,8 +155,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.displayName == e2?.displayName &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.photoUrl == e2?.photoUrl &&
-        e1?.farmName == e2?.farmName;
+        e1?.farmName == e2?.farmName &&
+        e1?.personalReceiptData == e2?.personalReceiptData &&
+        e1?.photoUrl == e2?.photoUrl;
   }
 
   @override
@@ -159,8 +169,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.displayName,
         e?.createdTime,
         e?.phoneNumber,
-        e?.photoUrl,
-        e?.farmName
+        e?.farmName,
+        e?.personalReceiptData,
+        e?.photoUrl
       ]);
 
   @override

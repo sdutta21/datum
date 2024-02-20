@@ -11,10 +11,10 @@ import 'register_model.dart';
 export 'register_model.dart';
 
 class RegisterWidget extends StatefulWidget {
-  const RegisterWidget({Key? key}) : super(key: key);
+  const RegisterWidget({super.key});
 
   @override
-  _RegisterWidgetState createState() => _RegisterWidgetState();
+  State<RegisterWidget> createState() => _RegisterWidgetState();
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
@@ -74,22 +74,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      'assets/images/418466_Icon,_Farm,_Data,_Management,_Accessible,_Datum___xl-1024-v1-0.png',
-                      width: 300.0,
-                      height: 200.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 150.0),
                   child: Text(
-                    'Datum',
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    'Company Logo',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Jost',
+                          color: FlutterFlowTheme.of(context).secondary,
+                          fontSize: 50.0,
+                        ),
                   ),
                 ),
               ],
@@ -111,9 +104,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           focusNode: _model.fullNameFocusNode,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Full Name',
                             alignLabelWithHint: false,
-                            hintText: 'Enter your name here...',
+                            hintText: 'Full Name',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).secondary,
@@ -144,8 +136,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context).secondary,
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: FlutterFlowTheme.of(context).primary,
+                            ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
                           keyboardType: TextInputType.emailAddress,
                           validator: _model.fullNameControllerValidator
                               .asValidator(context),
@@ -158,8 +158,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             focusNode: _model.farmNameFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Farm Name',
-                              hintText: 'Enter farm name...',
+                              hintText: 'Farm Name',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -190,8 +189,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context).secondary,
+                              prefixIcon: Icon(
+                                Icons.corporate_fare_sharp,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
                             validator: _model.farmNameControllerValidator
                                 .asValidator(context),
                           ),
@@ -204,8 +212,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             focusNode: _model.emailFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Email Address',
-                              hintText: 'Enter your email here...',
+                              hintText: 'Email Address',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -236,8 +243,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context).secondary,
+                              prefixIcon: Icon(
+                                Icons.email_outlined,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
                             keyboardType: TextInputType.emailAddress,
                             validator: _model.emailControllerValidator
                                 .asValidator(context),
@@ -251,8 +267,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             focusNode: _model.passwordFocusNode,
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
-                              labelText: 'Password',
-                              hintText: 'Enter your password here...',
+                              hintText: 'Password',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -283,6 +298,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context).secondary,
+                              prefixIcon: Icon(
+                                Icons.key_sharp,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
                                   () => _model.passwordVisibility =
@@ -293,12 +312,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   _model.passwordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
-                                  color: Color(0x80FFFFFF),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 22.0,
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
                             validator: _model.passwordControllerValidator
                                 .asValidator(context),
                           ),
@@ -311,8 +335,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             focusNode: _model.confirmPasswordFocusNode,
                             obscureText: !_model.confirmPasswordVisibility,
                             decoration: InputDecoration(
-                              labelText: 'Confirm Password',
-                              hintText: 'Confirm password here...',
+                              hintText: 'Confirm Password',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -343,6 +366,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context).secondary,
+                              prefixIcon: Icon(
+                                Icons.key_rounded,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
                                   () => _model.confirmPasswordVisibility =
@@ -353,12 +380,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   _model.confirmPasswordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
-                                  color: Color(0x80FFFFFF),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 22.0,
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
                             validator: _model.confirmPasswordControllerValidator
                                 .asValidator(context),
                           ),
@@ -394,11 +426,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               await UsersRecord.collection
                                   .doc(user.uid)
                                   .update(createUsersRecordData(
-                                    displayName: _model.fullNameController.text,
-                                    farmName: _model.farmNameController.text,
+                                    fullName: _model.fullNameController.text,
                                   ));
 
-                              context.goNamedAuth('myTasks', context.mounted);
+                              context.goNamedAuth('dashboard', context.mounted);
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(
@@ -412,7 +443,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Jost',
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

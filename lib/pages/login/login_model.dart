@@ -39,12 +39,14 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     emailTextControllerValidator = _emailTextControllerValidator;
     passwordVisibility = false;
     passwordTextControllerValidator = _passwordTextControllerValidator;
   }
 
+  @override
   void dispose() {
     textFieldFocusNode1?.dispose();
     emailTextController?.dispose();

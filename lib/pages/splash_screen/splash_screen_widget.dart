@@ -12,10 +12,10 @@ import 'splash_screen_model.dart';
 export 'splash_screen_model.dart';
 
 class SplashScreenWidget extends StatefulWidget {
-  const SplashScreenWidget({Key? key}) : super(key: key);
+  const SplashScreenWidget({super.key});
 
   @override
-  _SplashScreenWidgetState createState() => _SplashScreenWidgetState();
+  State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
 }
 
 class _SplashScreenWidgetState extends State<SplashScreenWidget>
@@ -114,20 +114,14 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryText,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: SafeArea(
         top: true,
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: MediaQuery.sizeOf(context).height * 1.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryText,
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: Image.asset(
-                'assets/images/bg_login@2x.png',
-              ).image,
-            ),
+            color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -143,8 +137,13 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Datum\nLogo',
-                        style: FlutterFlowTheme.of(context).titleMedium,
+                        'Company Logo',
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 50.0,
+                                ),
                       ),
                     ],
                   ),
@@ -181,7 +180,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Jost',
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -212,7 +211,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Jost',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
                                         fontWeight: FontWeight.bold,

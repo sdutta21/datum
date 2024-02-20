@@ -90,14 +90,14 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en'),
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
-        scrollbarTheme: ScrollbarThemeData(),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        scrollbarTheme: ScrollbarThemeData(),
       ),
       themeMode: _themeMode,
       routerConfig: _router,
@@ -117,7 +117,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'myTasks';
+  String _currentPageName = 'dashboard';
   late Widget? _currentPage;
 
   @override
@@ -130,8 +130,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'myTasks': MyTasksWidget(),
-      'CompletedTasks': CompletedTasksWidget(),
+      'dashboard': DashboardWidget(),
+      'List08ProductList': List08ProductListWidget(),
+      'EditProfileCopy': EditProfileCopyWidget(),
       'MyProfile': MyProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -148,31 +149,35 @@ class _NavBarPageState extends State<NavBarPage> {
         selectedItemColor: FlutterFlowTheme.of(context).primary,
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.playlist_add,
-              size: 32.0,
+              Icons.home_outlined,
+              size: 24.0,
             ),
             activeIcon: Icon(
-              Icons.playlist_add,
-              size: 32.0,
+              Icons.home,
+              size: 24.0,
             ),
-            label: '--',
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.alarm_on,
+              Icons.receipt_long_outlined,
+              size: 24.0,
+            ),
+            label: 'Log',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_chart,
               size: 32.0,
             ),
-            activeIcon: Icon(
-              Icons.alarm_on,
-              size: 32.0,
-            ),
-            label: '--',
+            label: 'Entry',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -184,7 +189,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.person_sharp,
               size: 32.0,
             ),
-            label: '--',
+            label: 'Profile',
             tooltip: '',
           )
         ],

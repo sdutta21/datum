@@ -28,10 +28,12 @@ class ChangePasswordModel extends FlutterFlowModel<ChangePasswordWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     emailTextControllerValidator = _emailTextControllerValidator;
   }
 
+  @override
   void dispose() {
     textFieldFocusNode?.dispose();
     emailTextController?.dispose();

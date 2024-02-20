@@ -37,11 +37,13 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passwordVisibility = false;
     confirmPasswordVisibility = false;
   }
 
+  @override
   void dispose() {
     fullNameFocusNode?.dispose();
     fullNameController?.dispose();

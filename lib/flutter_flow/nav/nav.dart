@@ -338,15 +338,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Color(0xFF02727E),
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/Screenshot_2024-02-20_at_4.41.10_PM.png',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;
